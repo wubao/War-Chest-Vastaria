@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>War Chest - Vastaria</title>
+
+<script src="js/ux_interface.js" type="text/javascript"></script> 
+<script src="js/warlord_instantiation_engine.js" type="text/javascript"></script> 
+<script src="js/world_instantiation_engine.js" type="text/javascript"></script>
+<script src="js/epochs_clock.js" type="text/javascript"></script> 
+<script src="js/turn_based_resources_yield_engine.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
+<!-- Magnific Popup core CSS file -->
+<link rel="stylesheet" href="js/library/magnific-popup.css"> 
+
+
+<style type="text/css">
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<div id="header">
+  <ul class="menu">
+    <li><span class="title">WAR CHEST - VASTARIA</span></li>
+    <li><a class="menulink" href="/WarChest/index.html">Land Generation Mechanism</a></li>
+  </ul>
+</div>
+ <div>
+  <h1>War Chest - Vastaria</h1>
+
+  
+  <!-- begin User Panel -->
+  <div id="user_panel">
+  <h2>SELECT A WARLORD <span id='username'></span></h2>
+  <form id="select_warlord" name="select_warlord" method="post" >
+  <label>Choose Warlord 1</label>
+    <select size="1" name="ruler_type" id="ruler_type" onchange="Select(this.value, this.options[this.selectedIndex].title);">
+      <option value="Explorer" title="+2 Territory Tiles" >Explorer</option>
+      <option value="Resourceful" title="+10% Resource Gathering" >Resourceful</option>
+      <option value="Commercial" title="+7% Battle Bonus">Courage</option>
+      <option value="Empire" title="+15% Build Speed">Empire</option>
+      <option value="Prosperity" title="+10% Population Growth Speed ">Prosperity</option>
+	  <option value="Expansionism" title="+2% Population Growth Speed +1 Settler">Expansionism</option>
+    </select>    
+	<input type="text" id="warlordName" value="ENTER A NAME FOR YOUR WARLORD" maxlength="60" onclick="this.value='';" />	
+	
+	<label>World Size:</label>
+    <select size="1" name="world_type" id="world_type" onchange="SelectWorld(this.value);">
+      <option value="1">Size 1</option>
+      <option value="2">Size 2</option>
+      <option value="3">Size 3</option>
+      <option value="4">Size 4</option>
+      <option value="5">Size 5</option>
+	  <option value="6">Size 6</option>
+    </select>    
+	
+	<p class="large_font" id="user_selection">WARLORD TYPE</p>
+	<p class="large_font" id="world_selection">WORLD SIZE</p>
+	
+	<input type="button" name="button" id="button" value="Initialize World" onclick="initializeWorld();return false;"/>
+	<a href="#world_canvas" onclick="ZaptosOpenPopup('#world_canvas')">SHOW RUNTIME WORLD MAP</a>  
+	<a href="#world_canvas" onclick="ZaptosOpenPopup('#world_variables')">SHOW RUNTIME WORLD VARIABLES</a>  
+	</form><!-- end User Panel -->
+	
+  </div>
+  <div id="user_outputs">
+  
+  	<div id="clock">
+    <span id="hour">hh</span>:<span id="min">mm</span>:<span id="sec">ss</span>
+	</div>
+	<div id="epoch_clock">
+    <span id="eday">dd</span>:<span id="ehour">hh</span>:<span id="emin">mm</span>:<span id="esec">ss</span>
+	</div>	
+	
+  	  <div id="world_canvas"></div>
+	  <div class="info" id="warlord_profile">
+	  <h3>Warlord Profile</h3>
+	    <ul>
+		  <li>Name</li>
+		  <li>Powers</li>
+		  <li>Territory Total</li>
+		  <li>Workers Total</li>		  
+	  <h4>Warlord Domain Possessions</h4>	    
+	      <li>Water <span id="w_res"></span></li>
+		  <li>Food <span id="f_res"></span></li>
+		  <li>Trees <span id="t_res"></span></li>
+		  <li>Stone <span id="s_res"></span></li>
+		  <li>Iron <span id="i_res"></span></li>
+		  <li>Gold <span id="g_res"></span></li>
+		</ul>
+	  <h4>Movable Warlord Objects</h4>	    
+		<ul>
+		  <li>Warlords</li>
+		   <ul>  
+		    <li>Leader</li>
+		    <li>Settlers</li>
+		    <li>Worker</li>		  
+		    <li>Gatherer</li>
+		    <li>Farmer</li>
+		    <li>Miner</li>
+		    <li>Builder</li>
+		   </ul>	
+		  <li>Army</li>		   
+		   <ul>  
+		    <li>Swordsman</li>
+		    <li>Spearman</li>
+		    <li>Knight</li>
+		    <li>Pikeman</li>
+		     <ul>
+		      <li>Arrows</li>
+		      <li>Swords</li>
+		      <li>Spears</li>
+		      <li>Horses</li>
+		      <li>Armor</li>
+		      <li>Pikes</li>	
+		      <li>Shields</li>	
+	         </ul>			
+		   </ul>
+	  <h4>Immobile Warlord Objects</h4>	
+		   <ul>  
+		     <li>Barracks</li>
+		     <li>Farm</li>
+		     <li>Repository</li>
+		   </ul>
+	    </ul>			
+	  </div>
+	  <div class="info" id="warlord_tiles">
+	  <h3>Tile Topography</h3>
+	    <ul>
+		  <li>Tile Number</li>
+		  <li>Terrain Type</li>	
+		  <li>Cloud Density</li>
+		  <li>Ownership</li>
+		</ul>
+	  <h4>Landscape Objects</h4>	  		     
+	    <ul>
+		  <li>Water <span id=""></span></li>
+		  <li>Food <span id=""></span></li>
+		  <li>Trees <span id=""></span></li>
+		  <li>Stone <span id=""></span></li>
+		  <li>Iron <span id=""></span></li>
+		  <li>Gold <span id=""></span></li>
+		</ul>				   
+	  </div>	  
+
+	  
+	  <table id="world_variables" class="mfp-hide">
+	  <tr>
+		<th rowspan="2">
+		<div class="user_output float large_font"><p class="user_output" id="world_resources">WORLD DIMENSIONS</p></div>
+		</th>
+		<th><div class="user_output float" id="world_resources_a"></div>
+		</th>
+	  </tr>
+	  <tr>	  
+		<td><div class="user_output float" id="world_resources_b"></div></td>
+	  </tr>
+	</table>
+  </div>
+	
+
+	
+
+
+
+ </div>
+
+ 
+  <ul class="mfp-hide">
+   <li>Warlord Unique Power Engine Generator [ 6 Warlords / Unique Powers / Settler ]</li>
+   <li>Player Resources Engine [ Army / Leader / Worker / Barracks / Farm / Repository / Army Weapons / Territory / Territory Resources Yield ]</li>
+   <li>Epochs Clock Engine [ Epoch Start Time / Epoch End Time / Epochs / Progress Timer ]</li>
+   <li>Build Men Engine [ Army / Leader / Builder ]</li>
+   <li>Build Structures Engine [ Barracks / Farm / Repository ]</li>
+   <li>Battles Engine [ battle experience / battle tactics / consecutive wins / battle tactics ]</li>
+   <li>Process Queue Engine [ Progress Time / Completed Actions ]</li>
+   <li>Map Engine [ Territory ] </li>
+  </ul>
+
+<script src="js/library/zepto.min.js"></script>  
+<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+<!-- Magnific Popup core JS file -->
+<script src="js/library/jquery.magnific-popup.min.js"></script>
+
+</body>
+</html>
+

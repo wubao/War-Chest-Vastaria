@@ -1,0 +1,254 @@
+@charset "utf-8";
+/* WAR CHEST CSS */
+
+
+body{ 
+    /* Reduce default font size to 10pt */
+    font: 62.5%/1.5  "Lucida Grande", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+}
+
+
+.caption {
+font-size:1.1em;
+}
+.header {
+font-size:1.5em;
+font-weight:bold;
+}
+
+/**********************************/
+
+
+#header {
+width:100%;
+float:left;
+clear:both;
+margin:30px 0 0 0;
+background-color:#5970B2;
+margin-bottom:40px;
+}
+
+#content {
+font-size:1.2em;
+}
+
+/***** pure css dropdown menu *****/
+
+ul.menu .menulink {border:1px solid #aaa;
+	padding: 4px 10px;
+	font-weight:bold; 
+	background: #5970B2;
+	width: 160px;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	margin-top:0px;
+}
+
+
+ul.menu .menulink:hover, ul.menu .menuhover {
+	background: #42608d;
+	color:#FFCC33;
+}
+
+ul.menu .sub {background:#d1d1d1 url(css/arrow.gif) 136px 8px no-repeat;}
+
+
+ul.menu {
+	list-style: none;
+    color: #FFFFFF;
+	font-size:14px;
+    text-decoration: none;
+	margin:0;
+	display:block;
+	padding:0;
+	}
+	
+ul.menu a{
+    padding: 0px 5px 4px 0px;
+	display: block;
+	color:#fff; 
+	text-decoration:none;
+	}
+
+ul.menu li {
+	list-style:none;
+	margin:0;
+    float: left;
+    position: relative;
+	display:block;
+	font: bold 11px arial;
+	color:#CC9933;
+}
+
+ul.menu li ul {
+    position: absolute;
+    display: none;
+	width:180px; /* all sync */
+	top:100%;
+	left:0px;
+    background:#d1d1d1; 
+	z-index:100000;
+	margin:0;
+	padding:0;
+}
+
+ul.menu li ul a {
+padding:3px 7px 5px;
+color:#333333;
+background-color:#d1d1d1;
+
+}
+
+ul.menu li ul a:visited {
+color:#333333;
+}
+
+ul.menu li ul a:hover {
+background-color:#49A3FF;
+color: #FFF;
+}
+
+ul.menu li:hover ul { 
+display:block;
+}
+ul.menu li ul li {
+background-color: #EDEEEE;
+border-bottom:1px solid #aaa;
+width:180px; /* all sync */
+display:block;
+z-index:100000;
+}
+
+ul.menu li ul li:hover {.user_panel
+background-color:#49A3FF;
+color: #FFF;
+display:block;
+}
+
+ul.menu li:hover ul li ul { display: none; }
+
+ul.menu li ul li:hover ul {
+				display: block;
+				position: absolute;
+				left: 180px; /* all sync */
+				top: 0px;
+				border-left: 1px solid #aaa;
+				z-index:100000;
+			}
+			
+.title {
+font-size:200%;
+font-weight:bold;
+padding:20px;
+color:#FFCC33;
+}
+
+
+/************** LAYOUT STYLES *****************/
+
+
+/** INTERFACES **/
+
+  /* USER PANEL */
+#user_panel { 
+	border: 2px solid #000; 
+	padding:1.5em;
+	display:block; 
+	width:80%;
+	} 
+#user_panel label { 
+	display:block;
+	}
+#user_panel input {
+	width:300px;
+	}
+#world_variables { 
+	border: 1px solid #000; 
+	padding:1em;
+	display:block;
+	}
+	
+/** RUNTIME **/
+
+
+  /** WORLD CANVAS **/		
+#world_wrapper {
+	display:block;
+	position:relative;
+}
+
+#world_canvas {
+	width:100%;
+	background-color:black;
+	display:relative;
+	}
+#world_canvas div {
+	width:60px;
+	height:60px;
+	border:1px solid black;
+	float:left;
+	}
+.Mountains {
+	background-color:Peru;
+	}
+.Plains { 
+	background-color:Azure;
+	}
+.Hills {
+	background-color:PapayaWhip;
+	}
+.Grasslands {
+	background-color:YellowGreen;
+	}
+.Swamps {
+	background-color:Turquoise;
+	}
+.column_end {
+	float:left;clear:both;
+	}
+	
+/** UI OUTPUTS **/	
+  
+  /* USER OUTPUTS */
+
+#user_outputs {
+	width:100%;
+	display:block;
+	}
+
+.user_output {
+
+	font-size:2em;
+	border:1px solid #000;
+	margin:20px;
+	padding:2em;
+	font-size:1.3em;
+	background-color:white;
+	}
+.float {
+	float:left;	
+	}	
+
+.large_font {
+	font-size:2em;
+	}
+  /* WARLORD VARIABLES PANEL */
+  
+.info {
+	float:left;
+	padding:30px;
+	margin:10px 20px;
+	border:solid #000 1px;
+	}
+  
+  /* TILE CLOUD DENSITY PANEL */
+
+  /* TILE TERRAIN PANEL */  
+
+  
+/* EPOCH CLOCK PANEL */
+
+
+
+
